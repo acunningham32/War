@@ -5,7 +5,7 @@ void Game::playCard()
 
 	if(c_user.getValue() > c_comp.getValue())
 	{
-		compAddCard(c_user, c_comp);
+		userAddCard(c_user, c_comp);
 	}
 	else if(tie(c_user, c_comp)
 	{
@@ -20,3 +20,4 @@ void Game::playCard()
 void Game::war(Card c_user, Card c_comp)
 {
 	warCards.add
+}
