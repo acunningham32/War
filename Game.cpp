@@ -1,24 +1,38 @@
 void Game::playCard()
 {
-	userCard = userHand.remove(0);
-	compCard = compHand.remove(0);
-
-	if(c_user.getValue() > c_comp.getValue())
+	if(userHand.size() == 0)
 	{
-		userAddCard(userCard, compCard);
+		cout << "User is out of cards: Computer wins!" << endl;
+		return;
 	}
-	else if(tie(userCard, compCard)
+	else if(compHand.size() == 0)
 	{
-		war(userCard, compCard);
+		cout << "Computer is out of cards: User wins!" << endl;
+		return;
 	}
 	else
 	{
-		compAddCard(userCard, compCard);
-	}	
+		userCard = userHand.remove(0);
+		compCard = compHand.remove(0);
+	
+		if(c_user.getValue() > c_comp.getValue())
+		{
+			userAddCard(userCard, compCard);
+		}
+		else if(tie(userCard, compCard)
+		{
+			war(userCard, compCard);
+		}
+		else
+		{
+			compAddCard(userCard, compCard);
+		}
+	}
 }
 
 void Game::war(Card userCard, Card compCard)
 {
+	//Code to check if the players have less than 3 cards, if both have less, lowest numebr loses.
 	warCards.push_back(userCard);
 	warCards.push_back(compCard);
 	for(int i = 0; i < 3; i++)
@@ -28,5 +42,5 @@ void Game::war(Card userCard, Card compCard)
 		warCards.push_back(compHand.at(0));
 		compHand.remove(0);
 	}
-	
+	playCard();
 }
