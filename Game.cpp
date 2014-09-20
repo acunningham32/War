@@ -1,23 +1,32 @@
 void Game::playCard()
 {
-	c_user = userHand.remove(0);
-	c_comp = compHand.remove(0);
+	userCard = userHand.remove(0);
+	compCard = compHand.remove(0);
 
 	if(c_user.getValue() > c_comp.getValue())
 	{
-		userAddCard(c_user, c_comp);
+		userAddCard(userCard, compCard);
 	}
-	else if(tie(c_user, c_comp)
+	else if(tie(userCard, compCard)
 	{
-		war(c_user, c_comp);
+		war(userCard, compCard);
 	}
 	else
 	{
-		compAddCard(c_user, c_comp);
+		compAddCard(userCard, compCard);
 	}	
 }
 
-void Game::war(Card c_user, Card c_comp)
+void Game::war(Card userCard, Card compCard)
 {
-	warCards.add
+	warCards.push_back(userCard);
+	warCards.push_back(compCard);
+	for(int i = 0; i < 3; i++)
+	{
+		warCards.push_back(userHand.at(0));
+		userHand.remove(0);
+		warCards.push_back(compHand.at(0));
+		compHand.remove(0);
+	}
+	
 }
