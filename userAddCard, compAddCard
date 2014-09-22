@@ -1,0 +1,19 @@
+void Game::userAddCard(Card a, Card b)
+{
+	if (!warCards.size() == 0)
+	{
+		userHand.push_back(a);
+		userHand.push_back(b);
+		warCards.clear();
+	}
+}
+
+void Game::compAddCard(Card a, Card b)
+{
+	if(!warCards.size() == 0)
+	{
+		compHand.push_back(a);
+		compHand.push_back(b);
+		warCards.clear();
+	}
+}
