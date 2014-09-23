@@ -1,0 +1,40 @@
+bool Game::userWin(Card a, Card b)
+{
+	if ( a > b) //cannot be done without overloading >
+	{
+		return true;
+		cout << "The user has won this round." << endl;
+	}
+	return false;
+	cout << "The computer has won this round." << endl;
+}
+
+bool Game::tie(Card a, Card b)
+{
+	if (a == b) //cannot be done without overloading ==
+	{
+		return true;
+		cout << "This round is a tie." << endl;
+	}
+}
+
+/*Note that in both tie and userWin, we are trying to compare Card objects. In order to do this, I had to write the overloading functions in
+	Yeager's card.h and card.cpp files. Writing the functions in our class Game will not work. I assumed that his variable faceValue was what I
+	was supposed to use. Feel free to correct me. The definitions are as follows:
+
+	Now in the card.h file:
+
+	friend bool operator >(const Card& a, const Card& b);
+	friend bool operator ==(const Card& a, const Card& b);
+
+Now in the card.cpp file:
+
+bool operator >(const Card& a, const Card& b)
+{
+	return (a.faceValue > b.faceValue);
+}
+
+bool operator ==(const Card& a, const Card& b)
+{
+	return (a.faceValue == b.faceValue);
+}*/
