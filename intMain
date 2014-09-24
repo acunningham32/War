@@ -1,0 +1,57 @@
+// Program2.cpp : Defines the entry point for the console application.
+/*Authors: Andrew Cunningham, Jessica Lewis, Jason Wichert, Amanda Vitale
+Course: COMP 220, Computer Programming II
+Date: 22 September 2014
+Purpose: The purpose of this code is to play the card game War between one player and the computer*/
+
+#include <iostream>
+#include <vector>
+
+#include "Card.h"
+#include "Deck.h"
+#include "Game.h"
+
+#include "Card.cpp"
+#include "Deck.cpp"
+#include "Game.cpp"
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::vector;
+
+int main()
+{
+	cout << "Hello, Welcome to our game of War!" << endl << "The rules of War are as follows:" << endl <<
+		"This is a two player game in which you will play against the computer." << endl << 
+		"You will be dealt 26 cards.  The goal of the game is to win all the cards." << endl <<
+		"Both players will turn over the top card in their deck." << endl <<
+		"The player with the higher of the two cards wins both of those cards." << endl <<
+		"If the cards are of equal value, a war occurs." << endl <<
+		"Both players will then flip one card face down, and one face up on top of it." << endl <<
+		"The player with the higher of the two cards wins all 6 cards." << endl <<
+		"If the new cards are equal as well, another war will occur." << endl <<
+		"The player to run out of cards first loses." << endl <<
+		"Type Yes to start!" << endl;
+	
+	char playAgain = 'Z';
+	cin >> playAgain;
+
+	do
+	{
+		//haven't been able to figure out how to call functions in main yet, error says something about a nonstatic member reference must be to a specific point
+		/*Deck newDeck;
+		Game::playCard(newDeck);
+
+		Deck::makeDeck();
+		Deck::dealDeck();*/
+
+		cout << "Do you want to play again? Type Y or N" << endl;
+		cin >> playAgain;
+	} while ((playAgain == 'Y') || (playAgain == 'y'));
+
+	cout << "Thanks for playing War!" << endl;
+	
+	return 0;
+}
+
