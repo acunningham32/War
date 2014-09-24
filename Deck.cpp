@@ -1,40 +1,40 @@
+/*
+  File: Deck.h
+  Author:  Andrew Cunningham, Jessica Lewis
+  Course:  COMP 220, Computer Programming II
+  Date:    22 September 2014
+  Description:  This file provides the definition of the data types
+				for the Deck class.
+*/
 
-#include "Card.h"
 #include "Deck.h"
-#include <iostream>
-#include <vector>
-#include <ctime>
+
 using std::cout;
-using std::vector;
+using std::cin;
+using std::endl;
 
-// I wrote this main function so I could test the functionalities of the Deck member functions
-/*int main()
+Deck::Deck() // The default constructor creates the deck vector made of Card objects
 {
-	srand(time(0));
-	Deck Deck;
-	Deck.makeDeck();
+	vector <Card> deck;
+}
 
-	return 0;
-}*/
 
 void Deck::dealDeck() // Splits the pre-shuffled deck evenly into two, adding every Card into either the userHand vector or compHand vector
 {
-	vector <Card> userHand;
-	//cout << "User Hand:\n";
+	cout << "User Hand:\n";
 	for (int i = 0; i < 26; i++)
 	{
-		userHand.push_back(deck[i]);
-		//cout << userHand[i].name() << "\n";
+		userDeck.push_back(deck[i]);
+		cout << userDeck[i].name() << "\n";
 	}
 
-	//cout << "\n";
+	cout << "\n";
 
-	vector <Card> compHand;
-	//cout << "Comp Hand:\n";
+	cout << "Comp Hand:\n";
 	for (int j = 0; j < 26; j++)
 	{
-		compHand.push_back(deck[j + 26]);
-		//cout << compHand[j].name() << "\n";
+		compDeck.push_back(deck[j + 26]);
+		cout << compDeck[j].name() << "\n";
 	}
 
 	return;
@@ -147,7 +147,7 @@ void Deck::makeDeck() // Creates and initializes every card object and puts it i
 	Card c52(ace, spades);
 	deck.push_back(c52);
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 1000; i++)	//randomize deck 
 	{
 		int randI = rand()%52;
 		int randI2 = rand()%52;
@@ -158,9 +158,4 @@ void Deck::makeDeck() // Creates and initializes every card object and puts it i
 
 	dealDeck(); //Here it calls dealDeck to deal the Deck to the two players, the userHand vector and the compHand vector
 
-}
-
-Deck::Deck() // The default constructor creates the deck vector made of Card objects
-{
-	vector <Card> deck;
 }
