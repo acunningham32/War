@@ -28,30 +28,33 @@ int main()
 		"Both players will turn over the top card in their deck." << endl <<
 		"The player with the higher of the two cards wins both of those cards." << endl <<
 		"If the cards are of equal value, a war occurs." << endl <<
-		"Both players will then flip one card face down, and one face up on top of it." << endl <<
-		"The player with the higher of the two cards wins all 6 cards." << endl <<
+		"Both players will then flip three cards face down, and then one face up." << endl <<
+		"The player with the higher of the two face up cards wins all 10 cards." << endl <<
 		"If the new cards are equal as well, another war will occur." << endl <<
 		"The player to run out of cards first loses." << endl <<
-		"Type Yes to start!" << endl;
+		"Type Y to start!" << endl;
 	
 	char playAgain = 'Z';
 	cin >> playAgain;
 
 	do
 	{
-		//haven't been able to figure out how to call functions in main yet, error says something about a nonstatic member reference must be to a specific point
-		/*Deck newDeck;
-		Game::playCard(newDeck);
+		Deck newDeck;
 
-		Deck::makeDeck();
-		Deck::dealDeck();*/
+		newDeck.makeDeck();
+
+		Game g(newDeck);
+		
+		do {
+			g.playCard();
+		} while (!g.isGameOver());
 
 		cout << "Do you want to play again? Type Y or N" << endl;
 		cin >> playAgain;
 	} while ((playAgain == 'Y') || (playAgain == 'y'));
 
 	cout << "Thanks for playing War!" << endl;
-	
+
 	return 0;
 }
 
