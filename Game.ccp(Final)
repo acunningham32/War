@@ -1,9 +1,9 @@
 /*
-  File: Game.cpp
-  Author:  Jason Wichert, Andrew Cunningham, Amanada Vitale
-  Course:  COMP 220, Computer Programming II
-  Date:    22 September 2014
-  Description:  This file provides the definition for the functions in the Game class.
+File: Game.cpp
+Author:  Jason Wichert, Andrew Cunningham, Amanada Vitale
+Course:  COMP 220, Computer Programming II
+Date:    22 September 2014
+Description:  This file provides the definition for the functions in the Game class.
 */
 
 #include "Game.h"
@@ -16,7 +16,7 @@ Game::Game() {}
 
 Game::Game(Deck d)	{
 	myDeck = d;
-	
+
 	for (int i = 0; i < d.userDeck.size(); i++)
 	{
 		userHand.push_back(d.userDeck.at(i));
@@ -52,7 +52,7 @@ void Game::playCard()
 		Card compCard = compHand.at(compHand.size()-1);
 		userHand.pop_back();
 		compHand.pop_back();
-		
+
 		cout << "You have a: " << userCard.name() << " Computer has a : " << compCard.name() << endl;
 
 		if(userCard.getValue() > compCard.getValue()) 
@@ -95,8 +95,8 @@ void Game::userAddCard(Card a, Card b)
 {
 	cout << "You won a " << a.name() << " and " << b.name() << endl; 
 
-	userHand.push_back(a);
-	userHand.push_back(b);
+	userHand.insert(userHand.begin(), a);
+	userHand.insert(userHand.begin(), b);
 
 	if (warCards.size() > 0) {
 
@@ -106,32 +106,49 @@ void Game::userAddCard(Card a, Card b)
 
 			cout << warCards.at(i).name() << ", ";
 
-			userHand.push_back(warCards.at(i));
+			userHand.insert(userHand.begin(), warCards.at(i));
 		}
 
 		warCards.clear();
 		cout << endl;
+		for (int i = 0; i < 100; i++)	//randomize deck 
+		{
+			int randI = rand()%(userHand.size()-1);
+			int randI2 = rand()%(userHand.size()-1);
+			Card tempCard = userHand.at(randI);
+			userHand.at(randI) = userHand.at(randI2);
+			userHand.at(randI2) = tempCard;
+		}
 	}
 }
 
 void Game::compAddCard(Card a, Card b)
 {
 	cout << "The computer won a " << a.name() << " and " << b.name() << endl;
-	compHand.push_back(a);
-	compHand.push_back(b);
+	compHand.insert(compHand.begin(), a);
+	compHand.insert(compHand.begin(), b);
 
 	if (warCards.size() > 0) {
 
 		cout << "The computer also won the following cards: ";
-		
+
 		for(int i = 0; i < warCards.size(); i++) {
-			
+
 			cout << warCards.at(i).name() << ", ";
-			
-			compHand.push_back(warCards.at(i));
+
+			compHand.insert(compHand.begin(), warCards.at(i));
 		}
-	warCards.clear();
-	cout << endl;
+		warCards.clear();
+		cout << endl;
+
+		for (int i = 0; i < 100; i++)	//randomize deck 
+		{
+			int randI = rand()%(compHand.size()-1);
+			int randI2 = rand()%(compHand.size()-1);
+			Card tempCard = compHand.at(randI);
+			compHand.at(randI) = compHand.at(randI2);
+			compHand.at(randI2) = tempCard;
+		}
 	}
 }
 
