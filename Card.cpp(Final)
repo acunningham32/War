@@ -7,6 +7,7 @@
                 Suit, Value, and Card.
 */
 #include "Card.h"
+
 string Card::suitName (Suit s) {
 	switch(s) {
 		case clubs: return "Clubs";
