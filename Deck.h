@@ -10,6 +10,8 @@
 #ifndef ___DECK_H
 #define ___DECK_H
 
+#include "Card.h"
+
 #include <vector>
 using std::vector;
 
