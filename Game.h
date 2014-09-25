@@ -10,6 +10,8 @@
 #ifndef ___GAME_H
 #define ___GAME_H
 
+#include "Card.h"
+#include "Deck.h"
 #include <vector>
 using std::vector;
 
