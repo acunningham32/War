@@ -27,6 +27,8 @@ Game::Game(Deck d)	{
 		compHand.push_back(d.compDeck.at(i));
 	}
 	gameOver = false;
+	userShuffleCounter = userHand.size();
+	compShuffleCounter = compHand.size();
 }
 
 void Game::playCard()
