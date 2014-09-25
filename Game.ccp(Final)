@@ -102,20 +102,9 @@ void Game::playCard()
 	return;
 }
 
-bool Game::userWin(Card a, Card b)
-{
-	if ( a > b) //cannot be done without overloading >
-	{
-		return true;
-		cout << " You won." << endl;
-	}
-	return false;
-	cout << " The computer won." << endl;
-}
-
 bool Game::tie(Card a, Card b)
 {
-	if (a == b) //cannot be done without overloading ==
+	if (a == b) // Overloaded the operator == for Cards
 	{
 		return true;
 	}
