@@ -30,6 +30,8 @@ private:
 	vector<Card> compHand;
 	Deck myDeck;
 	bool gameOver;
+	int userShuffleCounter;
+	int compShuffleCounter;
 };
 
 #endif
