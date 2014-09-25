@@ -6,7 +6,7 @@
   Description:  This file provides the definitions of the data types
                 Suit, Value, and Card.
 */
-
+#include "Card.h"
 string Card::suitName (Suit s) {
 	switch(s) {
 		case clubs: return "Clubs";
