@@ -25,7 +25,6 @@ public:
 	static string suitName (Suit s);
 	static string valueName (Value v);
 	string name() { return valueName (faceValue) + " of " + suitName(suit);}
-	friend bool operator >(const Card& a, const Card& b);
 	friend bool operator ==(const Card& a, const Card& b);
 private:
 		Suit suit;
