@@ -35,7 +35,8 @@ int main()
 		"Type 'r' to play the next round, or type 'g' to play the rest of the War game" << endl;
 		
 	char playAgain = 'Y';
-
+	
+	//starts a new game
 	while ((playAgain == 'Y') || (playAgain == 'y'))
 	{
 		Deck newDeck;
@@ -45,6 +46,8 @@ int main()
 		Game g(newDeck);
 
 		char play = ' ';
+		
+		//plays each round
 		do{
 			cin >> play;
 			if(play == 'r')
