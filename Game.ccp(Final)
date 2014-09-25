@@ -48,11 +48,39 @@ void Game::playCard()
 	}
 	else
 	{
+		//shuffles cards if current cards are went through
+		if(userShuffleCounter <= 0)
+		{
+			for (int i = 0; i < 100; i++)	//randomize deck 
+			{
+				int randI = rand()%(userHand.size()-1);
+				int randI2 = rand()%(userHand.size()-1);
+				Card tempCard = userHand.at(randI);
+				userHand.at(randI) = userHand.at(randI2);
+				userHand.at(randI2) = tempCard;
+			}
+			userShuffleCounter = userHand.size();
+		}
+		if(compShuffleCounter <= 0)
+		{
+			for (int i = 0; i < 100; i++)	//randomize deck 
+			{
+				int randI = rand()%(compHand.size()-1);
+				int randI2 = rand()%(compHand.size()-1);
+				Card tempCard = compHand.at(randI);
+				compHand.at(randI) = compHand.at(randI2);
+				compHand.at(randI2) = tempCard;
+			}	
+			compShuffleCounter = compHand.size();
+		}
+		
 		Card userCard = userHand.at(userHand.size()-1);
 		Card compCard = compHand.at(compHand.size()-1);
 		userHand.pop_back();
 		compHand.pop_back();
-
+		userShuffleCounter--;
+		compShuffleCounter--;
+		
 		cout << "You have a: " << userCard.name() << " Computer has a : " << compCard.name() << endl;
 
 		if(userCard.getValue() > compCard.getValue()) 
@@ -111,6 +139,8 @@ void Game::userAddCard(Card a, Card b)
 
 		warCards.clear();
 		cout << endl;
+		
+		/* Changed the shuffling to playCard()
 		for (int i = 0; i < 100; i++)	//randomize deck 
 		{
 			int randI = rand()%(userHand.size()-1);
@@ -119,6 +149,7 @@ void Game::userAddCard(Card a, Card b)
 			userHand.at(randI) = userHand.at(randI2);
 			userHand.at(randI2) = tempCard;
 		}
+		*/
 	}
 }
 
@@ -141,6 +172,7 @@ void Game::compAddCard(Card a, Card b)
 		warCards.clear();
 		cout << endl;
 
+		/* Changed the shuffle to playCard()
 		for (int i = 0; i < 100; i++)	//randomize deck 
 		{
 			int randI = rand()%(compHand.size()-1);
@@ -149,19 +181,20 @@ void Game::compAddCard(Card a, Card b)
 			compHand.at(randI) = compHand.at(randI2);
 			compHand.at(randI2) = tempCard;
 		}
+		*/
 	}
 }
 
 void Game::war(Card userCard, Card compCard)
 {
 	//Check if each user has at least 3 cards
-	if ((userHand.size() < 3) && (userHand.size() < compHand.size()))	//error: says myDeck is undefined again, not sure why
+	if ((userHand.size() < 3) && (userHand.size() < compHand.size()))
 	{
 		cout << "User is out of cards: Computer wins!" << endl;	
 		gameOver = true;
 		return;
 	}
-	else if ((compHand.size() < 3) && (compHand.size() < userHand.size()))	//maybe we should mke these 3's constants? 
+	else if ((compHand.size() < 3) && (compHand.size() < userHand.size()))
 	{
 		cout << "Computer is out of cards: User wins!" << endl;
 		gameOver = true;
@@ -181,8 +214,10 @@ void Game::war(Card userCard, Card compCard)
 		{
 			warCards.push_back(userHand.at(userHand.size()-1));
 			userHand.pop_back();
+			userShuffleCounter--;
 			warCards.push_back(compHand.at(compHand.size()-1));
 			compHand.pop_back();
+			userShuffleCounter--;
 		}
 		playCard(); 
 	}
