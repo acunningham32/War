@@ -6,14 +6,15 @@ Purpose: The purpose of this code is to play the card game War between one playe
 
 #include <iostream>
 #include <vector>
+#include <ctime>
 
 #include "Card.h"
 #include "Deck.h"
 #include "Game.h"
 
-#include "Card.cpp"
-#include "Deck.cpp"
-#include "Game.cpp"
+//#include "Card.cpp"
+//#include "Deck.cpp"
+//#include "Game.cpp"
 
 using std::cout;
 using std::cin;
@@ -22,6 +23,8 @@ using std::vector;
 
 int main()
 {
+	srand(time(0));
+	
 	cout << "Hello, Welcome to our game of War!" << endl << "The rules of War are as follows:" << endl <<
 		"This is a two player game in which you will play against the computer." << endl << 
 		"You will be dealt 26 cards.  The goal of the game is to win all the cards." << endl <<
