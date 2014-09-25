@@ -12,10 +12,6 @@ Purpose: The purpose of this code is to play the card game War between one playe
 #include "Deck.h"
 #include "Game.h"
 
-//#include "Card.cpp"
-//#include "Deck.cpp"
-//#include "Game.cpp"
-
 using std::cout;
 using std::cin;
 using std::endl;
@@ -24,7 +20,7 @@ using std::vector;
 int main()
 {
 	srand(time(0));
-	
+
 	cout << "Hello, Welcome to our game of War!" << endl << "The rules of War are as follows:" << endl <<
 		"This is a two player game in which you will play against the computer." << endl << 
 		"You will be dealt 26 cards.  The goal of the game is to win all the cards." << endl <<
@@ -35,29 +31,43 @@ int main()
 		"The player with the higher of the two face up cards wins all 10 cards." << endl <<
 		"If the new cards are equal as well, another war will occur." << endl <<
 		"The player to run out of cards first loses." << endl <<
-		"Type Y to start!" << endl;
-	
-	char playAgain = 'Z';
-	cin >> playAgain;
+		"-----------" << endl <<
+		"Type 'r' to play the next round, or type 'g' to play the rest of the War game" << endl;
+		
+	char playAgain = 'Y';
 
-	do
+	while ((playAgain == 'Y') || (playAgain == 'y'))
 	{
 		Deck newDeck;
 
 		newDeck.makeDeck();
 
 		Game g(newDeck);
-		
-		do {
-			g.playCard();
-		} while (!g.isGameOver());
 
+		char play = ' ';
+		do{
+			cin >> play;
+			if(play == 'r')
+			{
+				g.playCard();
+			}
+			else if(play == 'g')
+			{
+				do {
+					g.playCard();
+				} while (!g.isGameOver());
+				break;
+			}
+			else
+			{
+				cout << "Please enter an 'r' or a 'g'" << endl;
+			}
+		}while(!g.isGameOver());
 		cout << "Do you want to play again? Type Y or N" << endl;
 		cin >> playAgain;
-	} while ((playAgain == 'Y') || (playAgain == 'y'));
+	}
 
 	cout << "Thanks for playing War!" << endl;
 
 	return 0;
 }
-
