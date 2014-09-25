@@ -21,20 +21,13 @@ Deck::Deck() // The default constructor creates the deck vector made of Card obj
 
 void Deck::dealDeck() // Splits the pre-shuffled deck evenly into two, adding every Card into either the userHand vector or compHand vector
 {
-	cout << "User Hand:\n";
 	for (int i = 0; i < 26; i++)
 	{
 		userDeck.push_back(deck[i]);
-		cout << userDeck[i].name() << "\n";
 	}
-
-	cout << "\n";
-
-	cout << "Comp Hand:\n";
 	for (int j = 0; j < 26; j++)
 	{
 		compDeck.push_back(deck[j + 26]);
-		cout << compDeck[j].name() << "\n";
 	}
 
 	return;
