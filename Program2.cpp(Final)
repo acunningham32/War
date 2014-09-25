@@ -35,7 +35,7 @@ int main()
 		"Type 'r' to play the next round, or type 'g' to play the rest of the War game" << endl;
 		
 	char playAgain = 'Y';
-	
+
 	//starts a new game
 	while ((playAgain == 'Y') || (playAgain == 'y'))
 	{
@@ -46,7 +46,7 @@ int main()
 		Game g(newDeck);
 
 		char play = ' ';
-		
+
 		//plays each round
 		do{
 			cin >> play;
@@ -65,7 +65,7 @@ int main()
 			{
 				cout << "Please enter an 'r' or a 'g'" << endl;
 			}
-		}while(!g.isGameOver());
+		} while(!g.isGameOver());
 		cout << "Do you want to play again? Type Y or N" << endl;
 		cin >> playAgain;
 	}
